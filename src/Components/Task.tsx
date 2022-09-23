@@ -1,6 +1,7 @@
 import React from 'react';
 import '../CSS/App.css';
 
+//Create a new task
 function Task(_props: any) {
   return (
       // @ts-ignore
@@ -9,6 +10,7 @@ function Task(_props: any) {
             <input id={_props.id} type="checkbox" />
             <label htmlFor={_props.id}>{_props.children}</label>
       </header>
+      <button id="deleteBtn"></button>
     </li>
   );
 }
