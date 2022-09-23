@@ -35,7 +35,6 @@ function App() {
 					{tasks.map((task) => (
 						// @ts-ignore
 						<Task key={task.id}>
-						
 							{task.name}
 						</Task>
 					))}
