@@ -1,11 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from './Form';
 import Task from './Task';
 import '../CSS/App.css';
+import { log } from 'console';
 // @ts-ignore
 
+
 function App() {
-	const [tasks, setTasks] = useState([]);
+	let [tasks, setTasks] = useState([]);
+
+	//run once when the app starts - load tasks from local storage
+	useEffect(() => {
+		loadTaskFromLocalStorage();
+	}, []);
 
 	//This adds a task to the list
 	function addTask(name: string) {
@@ -16,15 +23,32 @@ function App() {
 		};
 		// @ts-ignore
 		setTasks([...tasks, task]);
+
+		//Save tasks to local storage
+		updateLocalStorage();
 	}
 
 	//This removes a task from the list
 	function removeTask(taskId: string) {
 		const newTasks = tasks.filter((task: { id: string; }) => task.id !== taskId);
 		setTasks(newTasks);
-
-    console.log('Removed task: ' + taskId);
+		console.log("NewTaks");
+		console.table(newTasks);
+		
+		updateLocalStorage();
+    		console.log('Removed task: ' + taskId);
     
+	}
+
+	function updateLocalStorage() {
+		localStorage.setItem('tasks', JSON.stringify(tasks));
+		console.log(tasks);
+		
+	}
+
+	function loadTaskFromLocalStorage() {
+		const savedTasks = JSON.parse(localStorage.getItem('tasks') || '[]');
+		setTasks(savedTasks);
 	}
 
 	return (
