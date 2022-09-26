@@ -7,6 +7,7 @@ import { log } from 'console';
 
 
 function App() {
+	
 	let [tasks, setTasks] = useState([]);
 
 	//run once when the app starts - load tasks from local storage
@@ -30,6 +31,7 @@ function App() {
 
 	//This removes a task from the list
 	function removeTask(taskId: string) {
+		//debugger;
 		const newTasks = tasks.filter((task: { id: string; }) => task.id !== taskId);
 		setTasks(newTasks);
 		console.log("NewTaks");
