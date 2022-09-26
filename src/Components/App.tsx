@@ -22,6 +22,9 @@ function App() {
 	function removeTask(taskId: string) {
 		const newTasks = tasks.filter((task: { id: string; }) => task.id !== taskId);
 		setTasks(newTasks);
+
+    console.log('Removed task: ' + taskId);
+    
 	}
 
 	return (
@@ -34,7 +37,7 @@ function App() {
 				<ul>
 					{tasks.map((task) => (
 						// @ts-ignore
-						<Task key={task.id}>
+						<Task key={task.id} id={task.id} removeTask={removeTask}>
 							{task.name}
 						</Task>
 					))}

@@ -10,7 +10,7 @@ function Task(_props: any) {
             <input id={_props.id} type="checkbox" />
             <label htmlFor={_props.id}>{_props.children}</label>
       </header>
-      <button id="deleteBtn"></button>
+      <button id="deleteBtn" onClick={ ()=>{_props.removeTask(_props.id)} }> </button>
     </li>
   );
 }
