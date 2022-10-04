@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
+import { loadTaskFromLocalStorage } from './Components/Storage';
+
+const tasks = loadTaskFromLocalStorage();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <App tasks = {tasks}/>
   </React.StrictMode>
 );
 

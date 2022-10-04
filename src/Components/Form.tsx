@@ -24,7 +24,7 @@ function Form(props: any) {
 	}
 
 	return (
-		<form onSubmit={handleSubmit}>
+		<form className='formCreateNewTask' onSubmit={handleSubmit}>
 			<label htmlFor="task-name"> Task Name: </label>
 			<br />
 			<input
