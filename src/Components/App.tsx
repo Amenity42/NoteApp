@@ -3,11 +3,19 @@ import Form from './Form';
 import Task from './Task';
 import '../CSS/App.css';
 import {updateLocalStorage} from './Storage';
+import ContentArea from './ContentArea';
 
 
 function App(props) {
 	
+	//States
 	let [tasks, setTasks] = useState(props.tasks);
+	let [activeTask, setActiveTask] = useState(null);
+
+	function findActiveTask(id) {
+		let task = tasks.find((task) => task.id === id);
+		setActiveTask(task);
+	}
 
 	//This adds a task to the list
 	function addTask(name: string) {
@@ -43,20 +51,26 @@ function App(props) {
 
 			{tasks.length ? (
 				<Fragment>
-					<section className='task-container'>
+					< section className='task-container'>
 						<section className='task-list'>
 							<ul>
 								{tasks.map((task) => (
 									// @ts-ignore
-									<Task key={task.id} id={task.id} removeTask={removeTask}>
+									<Task key={task.id} id={task.id} removeTask={removeTask} setActiveTask2={findActiveTask}>
 										{task.name}
 									</Task>
 								))}
 							</ul>
 						</section>
 
+			                  {/* if state of task content is null show nothing else show state */}
 						<section className='task-content'>
-						<h2>Task Content</h2>
+						{/* {activeTask && <ContentArea {...activeTask}></ContentArea>} */}
+						{activeTask ? (
+							<ContentArea {...activeTask}></ContentArea>
+						) : (
+							null
+						)}
 						</section>
 					</section>
 				</Fragment>
