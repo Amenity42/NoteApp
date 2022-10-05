@@ -25,16 +25,8 @@ function App(props) {
 
 	//This removes a task from the list
 	function removeTask(taskId: string) {
-		debugger;
 		const newTasks = tasks.filter((task: { id: string; }) => task.id !== taskId);
 		setTasks(newTasks);
-		console.log("NewTasks");
-		console.table(newTasks);
-		
-		// updateLocalStorage();
-    		console.log('Removed task: ' + taskId);
-		console.table(tasks);
-    
 	}
 
 	useEffect(() => {
