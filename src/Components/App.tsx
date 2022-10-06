@@ -37,8 +37,9 @@ function App(props) {
 	}
 
 	useEffect(() => {
+		setTasks([...tasks, activeTask]);
 		updateLocalStorage(tasks);
-	}, [tasks]);
+	}, [setActiveTask, tasks]);
 
 	return (
 		<div className="App">
@@ -65,8 +66,9 @@ function App(props) {
 			                  {/* if state of task content is null show nothing else show state */}
 						<section className='task-content'>
 						{/* {activeTask && <ContentArea {...activeTask}></ContentArea>} */}
+						
 						{activeTask ? (
-							<ContentArea {...activeTask}></ContentArea>
+							<ContentArea {...activeTask} setActiveTask={setActiveTask}></ContentArea>
 						) : (
 							null
 						)}
