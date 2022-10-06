@@ -23,6 +23,7 @@ function App(props) {
 			name,
 			done: false,
 			id: crypto.randomUUID(),
+			content: '',
 		};
 		// @ts-ignore
 		setTasks([...tasks, task]);
