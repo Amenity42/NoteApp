@@ -28,8 +28,6 @@ function App(props) {
 		// @ts-ignore
 		setTasks([...tasks, task]);
 
-		//Save tasks to local storage
-		 //updateLocalStorage(tasks); //not updating as expected (last task is not saved)
 	}
 
 	//This removes a task from the list
