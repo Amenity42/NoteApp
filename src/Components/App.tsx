@@ -37,9 +37,9 @@ function App(props) {
 	}
 
 	useEffect(() => {
-		setTasks([...tasks, activeTask]);
+		// setTasks([...tasks, activeTask]);
 		updateLocalStorage(tasks);
-	}, [setActiveTask, tasks]);
+	}, [tasks]);
 
 	return (
 		<div className="App">
@@ -68,7 +68,7 @@ function App(props) {
 						{/* {activeTask && <ContentArea {...activeTask}></ContentArea>} */}
 						
 						{activeTask ? (
-							<ContentArea {...activeTask} setActiveTask={setActiveTask}></ContentArea>
+							<ContentArea {...activeTask} setActiveTask={setActiveTask}>{console.log(activeTask)}</ContentArea>
 						) : (
 							null
 						)}
@@ -81,5 +81,6 @@ function App(props) {
 		</div>
 	);
 }
+
 
 export default App;
