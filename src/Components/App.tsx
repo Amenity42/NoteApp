@@ -68,7 +68,7 @@ function App(props) {
 						{/* {activeTask && <ContentArea {...activeTask}></ContentArea>} */}
 						
 						{activeTask ? (
-							<ContentArea {...activeTask} setActiveTask={setActiveTask}>{ console.log( `${tasks.findIndex((task)=> task.id ) === activeTask.id} ${activeTask.id}` ) }</ContentArea>
+							<ContentArea {...activeTask} setActiveTask={setActiveTask}>{ setTasks([activeTask, tasks]) }</ContentArea>
 							//! {/* I need to take the active task and find it within the tasks array then update the values of it with the values from actiove task, once this is done i then need to update the tasks state */}
 						) : (
 							null
