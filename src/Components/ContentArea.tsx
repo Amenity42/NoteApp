@@ -14,7 +14,7 @@ function ContentArea(_props: any) {
                   <br></br>
                   <p>{_props.task.content}</p>
       
-                  <input value={_props.task.content} onChange={handleChange} type="text" id="editContent" placeholder="Edit Content"></input>
+                  <input onChange={handleChange} type="text" id="editContent" placeholder="Edit Content"></input>
             </div>
       );   
 
