@@ -10,12 +10,12 @@ function App(props) {
 	
 	//States
 	let [tasks, setTasks] = useState(props.tasks);
-	let [activeTask, setActiveTask] = useState(null);
+	let [activeId, setActiveId] = useState(null);
 
-	function findActiveTask(id) {
-		let task = tasks.find((task) => task.id === id);
-		setActiveTask(task);
-	}
+	// function findActiveTask(id) {
+	// 	let task = tasks.find((task) => task.id === id);
+	// 	setActiveTask(task);
+	// }
 
 	//This adds a task to the list
 	function addTask(name: string) {
@@ -33,6 +33,16 @@ function App(props) {
 	//This removes a task from the list
 	function removeTask(taskId: string) {
 		const newTasks = tasks.filter((task: { id: string; }) => task.id !== taskId);
+		setTasks(newTasks);
+	}
+
+	function updateTask(taskId: string, content: string) {
+		const newTasks = tasks.map((task: { id: string; content: string; }) => {
+			if (task.id === taskId) {
+				return {...task, content };
+			}
+			return task;
+		});
 		setTasks(newTasks);
 	}
 
@@ -56,7 +66,7 @@ function App(props) {
 							<ul>
 								{tasks.map((task) => (
 									// @ts-ignore
-									<Task key={task.id} id={task.id} removeTask={removeTask} setActiveTask2={findActiveTask}>
+									<Task key={task.id} id={task.id} removeTask={removeTask} setActiveId={setActiveId}>
 										{task.name}
 									</Task>
 								))}
@@ -67,9 +77,8 @@ function App(props) {
 						<section className='task-content'>
 						{/* {activeTask && <ContentArea {...activeTask}></ContentArea>} */}
 						
-						{activeTask ? (
-							<ContentArea {...activeTask} setActiveTask={setActiveTask}>{ setTasks([activeTask, tasks]) }</ContentArea>
-							//! {/* I need to take the active task and find it within the tasks array then update the values of it with the values from actiove task, once this is done i then need to update the tasks state */}
+						{activeId ? (
+							<ContentArea task={tasks.find(task => task.id === activeId)} updateTask={updateTask}> </ContentArea>
 						) : (
 							null
 						)}

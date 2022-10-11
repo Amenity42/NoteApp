@@ -6,7 +6,7 @@ import setContentArea from './ContentArea';
 function Task(_props: any) {
   return (
       // @ts-ignore
-    <li className="Task" onClick={ ()=>{_props.setActiveTask2(_props.id)}}>
+    <li className="Task" onClick={ ()=>{_props.setActiveId(_props.id)}}>
       <header>
             <input id={_props.id} className="individualTask" type="checkbox"/>
             <label htmlFor={_props.id}>{_props.children}</label>

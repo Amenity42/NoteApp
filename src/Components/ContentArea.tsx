@@ -3,20 +3,18 @@ import React from "react"
 // import { loadTaskFromLocalStorage } from "./Storage";
 
 function ContentArea(_props: any) {
-      const obj = {
-            name: _props.name,
-            content: _props.content,
-            done: _props.done,
-            id: _props.id,
+
+      function handleChange(event: any) {
+        _props.updateTask(_props.task.id, event.target.value);
       }
 
       return (
             <div className="ContentArea">
-                  <h2>{_props.name}</h2>
+                  <h2>{_props.task.name}</h2>
                   <br></br>
-                  <p>{_props.content}</p>
+                  <p>{_props.task.content}</p>
       
-                  <input onChange={(event)=>{_props.setActiveTask({...obj, content: event.target.value})}} type="text" id="editContent" placeholder="Edit Content"></input>
+                  <input value={_props.task.content} onChange={handleChange} type="text" id="editContent" placeholder="Edit Content"></input>
             </div>
       );   
 
