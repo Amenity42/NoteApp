@@ -4,6 +4,7 @@ import Task from './Task';
 import '../CSS/App.css';
 import {updateLocalStorage} from './Storage';
 import ContentArea from './ContentArea';
+import AddTask from './AddTask';
 
 
 function App(props) {
@@ -11,11 +12,6 @@ function App(props) {
 	//States
 	let [tasks, setTasks] = useState(props.tasks);
 	let [activeId, setActiveId] = useState(null);
-
-	// function findActiveTask(id) {
-	// 	let task = tasks.find((task) => task.id === id);
-	// 	setActiveTask(task);
-	// }
 
 	//This adds a task to the list
 	function addTask(name: string) {
@@ -55,6 +51,8 @@ function App(props) {
 		<div className="App">
 			<header className="App-header">
 				<h1> Task List </h1>	
+				<AddTask></AddTask>
+				
 			</header>
 			
 			<Form onSubmit={addTask} />
